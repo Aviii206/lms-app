@@ -1,0 +1,28 @@
+[
+  {
+    "_id": "69cc1a7bf1ae06e082812b63",
+    "title": "Web Programming",
+    "description": "Learn HTML-CSS-JS-ReactJs from Scratch!",
+    "teacher": "69cc1a5af1ae06e082812b5c",
+    "students": [
+      "69cc1a45f1ae06e082812b55"
+    ],
+    "modules": [],
+    "createdAt": "2026-03-31T19:03:23.525Z",
+    "updatedAt": "2026-03-31T19:04:55.548Z",
+    "__v": 1
+  },
+  {
+    "_id": "69cc1aa1f1ae06e082812b6a",
+    "title": "Gen AI",
+    "description": "Learn about llms, n8n, langChain, and more.",
+    "teacher": "69cc1a5af1ae06e082812b5c",
+    "students": [
+      "69cc1a45f1ae06e082812b55"
+    ],
+    "modules": [],
+    "createdAt": "2026-03-31T19:04:01.308Z",
+    "updatedAt": "2026-03-31T19:05:08.730Z",
+    "__v": 1
+  }
+]

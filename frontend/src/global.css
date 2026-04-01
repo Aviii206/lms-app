@@ -1,0 +1,70 @@
+/* Global Baseline Stylings */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import './styles/components.css';
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    line-height: 1.5;
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+}
+
+body {
+    background-color: #f8fafc;
+    color: #0f172a;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #0f172a;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 10px;
+    border: 1px solid #cbd5e1;
+    margin-top: 5px;
+    color: #0f172a;
+    background-color: #f8fafc;
+    transition: all 0.2s ease;
+    font-size: 15px;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: #3b82f6;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th {
+    padding: 12px 15px;
+    text-align: left;
+    color: #475569;
+    font-weight: 600;
+    font-size: 13px;
+    border-bottom: 2px solid #e2e8f0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+td {
+    padding: 15px;
+    color: #334155;
+    font-size: 14px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+tr:hover td {
+    background-color: #f8fafc;
+}

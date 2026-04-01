@@ -1,0 +1,22 @@
+[
+  {
+    "_id": "69cc1a45f1ae06e082812b55",
+    "name": "Ayush Sharma",
+    "email": "ayush.sharma2024@gmail.com",
+    "password": "$2b$10$2Ww38W2QyinM78ImncBi0.Rgh2ymTy85WgRsSBAvVG3Z3SGAcDU8u",
+    "role": "student",
+    "createdAt": "2026-03-31T19:02:29.435Z",
+    "updatedAt": "2026-03-31T19:02:29.435Z",
+    "__v": 0
+  },
+  {
+    "_id": "69cc1a5af1ae06e082812b5c",
+    "name": "Avi Sharma",
+    "email": "avi.sharma2024@gmail.com",
+    "password": "$2b$10$rCH7phUDhbLiDGwnW661LO/.wf58aHvIlG.Yu43U3085wWutrJCn2",
+    "role": "teacher",
+    "createdAt": "2026-03-31T19:02:50.981Z",
+    "updatedAt": "2026-03-31T19:02:50.981Z",
+    "__v": 0
+  }
+]
