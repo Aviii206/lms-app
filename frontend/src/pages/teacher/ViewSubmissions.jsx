@@ -9,7 +9,7 @@ const ViewSubmissions = () => {
 
   const fetchSubmissions = async () => {
     const { data } = await axios.get(
-      "http://localhost:5000/api/assignments/teacher/submissions",
+      "http://import.meta.env.VITE_API_URL/assignments/teacher/submissions",
       {
         headers: {
           Authorization: `Bearer ${user.token}`,
@@ -30,7 +30,7 @@ const ViewSubmissions = () => {
     if (!grade) return;
 
     await axios.put(
-      `http://localhost:5000/api/assignments/grade/${submissionId}`,
+      `http://import.meta.env.VITE_API_URL/assignments/grade/${submissionId}`,
       { grade: Number(grade) },
       {
         headers: {

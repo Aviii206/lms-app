@@ -17,7 +17,7 @@ const GradeAttempt = () => {
   useEffect(() => {
     const fetchReview = async () => {
       try {
-        const { data } = await axios.get(`http://localhost:5000/api/attempts/${attemptId}/review`, {
+        const { data } = await axios.get(`http://import.meta.env.VITE_API_URL/attempts/${attemptId}/review`, {
           headers: { Authorization: `Bearer ${user.token}` }
         });
         setAttempt(data.attempt);
@@ -49,7 +49,7 @@ const GradeAttempt = () => {
         marksGiven: Number(manualGrades[ansId])
       }));
 
-      await axios.put(`http://localhost:5000/api/attempts/${attemptId}/grade`, { manualGrades: gradesArray }, {
+      await axios.put(`http://import.meta.env.VITE_API_URL/attempts/${attemptId}/grade`, { manualGrades: gradesArray }, {
         headers: { Authorization: `Bearer ${user.token}` }
       });
 

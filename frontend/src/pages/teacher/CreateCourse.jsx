@@ -16,7 +16,7 @@ const CreateCourse = () => {
 
     try {
       await axios.post(
-        "http://localhost:5000/api/courses",
+        "http://import.meta.env.VITE_API_URL/courses",
         { title, description },
         {
           headers: {

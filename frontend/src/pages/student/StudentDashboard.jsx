@@ -12,7 +12,7 @@ const StudentDashboard = () => {
   useEffect(() => {
     const fetchDashboard = async () => {
       const { data } = await axios.get(
-        "http://localhost:5000/api/courses/student/dashboard",
+        "http://import.meta.env.VITE_API_URL/courses/student/dashboard",
         {
           headers: {
             Authorization: `Bearer ${user.token}`,

@@ -12,7 +12,7 @@ const CourseDetails = () => {
   useEffect(() => {
     const fetchCourse = async () => {
       const { data } = await axios.get(
-        "http://localhost:5000/api/courses",
+        "http://import.meta.env.VITE_API_URL/courses",
         {
           headers: {
             Authorization: `Bearer ${user.token}`,

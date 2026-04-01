@@ -14,7 +14,7 @@ const ReviewAttempts = () => {
   useEffect(() => {
     const fetchAttempts = async () => {
       try {
-        const { data } = await axios.get(`http://localhost:5000/api/attempts/test/${testId}`, {
+        const { data } = await axios.get(`http://import.meta.env.VITE_API_URL/attempts/test/${testId}`, {
           headers: { Authorization: `Bearer ${user.token}` }
         });
         setAttempts(data);

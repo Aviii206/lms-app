@@ -16,7 +16,7 @@ const Assignments = () => {
   useEffect(() => {
     const fetchCourses = async () => {
       const { data } = await axios.get(
-        "http://localhost:5000/api/courses/teacher/dashboard",
+        "http://import.meta.env.VITE_API_URL/courses/teacher/dashboard",
         {
           headers: {
             Authorization: `Bearer ${user.token}`,
@@ -35,7 +35,7 @@ const Assignments = () => {
 
     try {
       await axios.post(
-        `http://localhost:5000/api/assignments/${selectedCourse}`,
+        `http://import.meta.env.VITE_API_URL/assignments/${selectedCourse}`,
         { title, description, dueDate },
         {
           headers: {
