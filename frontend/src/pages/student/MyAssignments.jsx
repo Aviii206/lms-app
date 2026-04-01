@@ -10,7 +10,7 @@ const MyAssignments = () => {
   useEffect(() => {
     const fetchAssignments = async () => {
       const res = await axios.get(
-        "http://import.meta.env.VITE_API_URL/assignments/student",
+        "http://localhost:5000/api/assignments/student",
         {
           headers: {
             Authorization: `Bearer ${user.token}`,
@@ -30,7 +30,7 @@ const MyAssignments = () => {
     if (!content) return;
 
     await axios.post(
-      `http://import.meta.env.VITE_API_URL/assignments/submit/${assignmentId}`,
+      `http://localhost:5000/api/assignments/submit/${assignmentId}`,
       { content },
       {
         headers: {

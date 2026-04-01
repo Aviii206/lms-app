@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://import.meta.env.VITE_API_URL/attempts";
+const API_URL = "http://localhost:5000/api/attempts";
 
 const getConfig = () => {
   const userInfo = JSON.parse(localStorage.getItem("userInfo"));

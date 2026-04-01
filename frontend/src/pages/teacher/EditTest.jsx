@@ -25,7 +25,7 @@ const EditTest = () => {
   useEffect(() => {
     const fetchInitData = async () => {
       try {
-        const courseRes = await axios.get("http://import.meta.env.VITE_API_URL/courses/teacher/dashboard", {
+        const courseRes = await axios.get("http://localhost:5000/api/courses/teacher/dashboard", {
           headers: { Authorization: `Bearer ${user.token}` }
         });
         setCourses(courseRes.data.courses);
