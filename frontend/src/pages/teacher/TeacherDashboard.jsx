@@ -2,7 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import DashboardLayout from "../../components/layout/DashboardLayout";
 import { AuthContext } from "../../context/AuthContext";
-import StatCard from "../../components/common/Statcard";
+import StatCard from "../../components/common/StatCard";
 import "../../styles/dashboard.css";
 
 const TeacherDashboard = () => {
@@ -12,7 +12,7 @@ const TeacherDashboard = () => {
   useEffect(() => {
     const fetchDashboard = async () => {
       const { data } = await axios.get(
-        "https://lms-app-backend-ruzu.onrender.com/api/courses/teacher/dashboard",
+        (import.meta.env.VITE_API_BASE_URL || "http://localhost:5000") + "/api/courses/teacher/dashboard",
         {
           headers: {
             Authorization: `Bearer ${user.token}`,

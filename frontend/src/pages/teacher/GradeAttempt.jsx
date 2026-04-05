@@ -17,7 +17,7 @@ const GradeAttempt = () => {
   useEffect(() => {
     const fetchReview = async () => {
       try {
-        const { data } = await axios.get(`https://lms-app-backend-ruzu.onrender.com/api/attempts/${attemptId}/review`, {
+        const { data } = await axios.get(`${import.meta.env.VITE_API_BASE_URL || "http://localhost:5000"}/api/attempts/${attemptId}/review`, {
           headers: { Authorization: `Bearer ${user.token}` }
         });
         setAttempt(data.attempt);
@@ -49,7 +49,7 @@ const GradeAttempt = () => {
         marksGiven: Number(manualGrades[ansId])
       }));
 
-      await axios.put(`https://lms-app-backend-ruzu.onrender.com/api/attempts/${attemptId}/grade`, { manualGrades: gradesArray }, {
+      await axios.put(`${import.meta.env.VITE_API_BASE_URL || "http://localhost:5000"}/api/attempts/${attemptId}/grade`, { manualGrades: gradesArray }, {
         headers: { Authorization: `Bearer ${user.token}` }
       });
 

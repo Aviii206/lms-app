@@ -10,7 +10,7 @@ const BrowseCourses = () => {
   const fetchCourses = async () => {
     try {
       const { data } = await axios.get(
-        "https://lms-app-backend-ruzu.onrender.com/api/courses",
+        (import.meta.env.VITE_API_BASE_URL || "http://localhost:5000") + "/api/courses",
         {
           headers: {
             Authorization: `Bearer ${user.token}`,
@@ -27,7 +27,7 @@ const BrowseCourses = () => {
   const handleEnroll = async (courseId) => {
     try {
       await axios.post(
-        `https://lms-app-backend-ruzu.onrender.com/api/courses/${courseId}/enroll`,
+        `${import.meta.env.VITE_API_BASE_URL || "http://localhost:5000"}/api/courses/${courseId}/enroll`,
         {},
         {
           headers: {

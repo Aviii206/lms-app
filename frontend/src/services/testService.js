@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "https://lms-app-backend-ruzu.onrender.com/api/tests";
+const API_URL = (import.meta.env.VITE_API_BASE_URL || "http://localhost:5000") + "/api/tests";
 
 const getConfig = () => {
   const userInfo = JSON.parse(localStorage.getItem("userInfo"));

@@ -12,7 +12,7 @@ const MyCourses = () => {
   useEffect(() => {
     const fetchCourses = async () => {
       const { data } = await axios.get(
-        "https://lms-app-backend-ruzu.onrender.com/api/courses/teacher/dashboard",
+        (import.meta.env.VITE_API_BASE_URL || "http://localhost:5000") + "/api/courses/teacher/dashboard",
         {
           headers: {
             Authorization: `Bearer ${user.token}`,
