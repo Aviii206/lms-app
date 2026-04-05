@@ -16,7 +16,7 @@ const CreateCourse = () => {
 
     try {
       await axios.post(
-        "http://localhost:5000/api/courses",
+        "https://lms-app-backend-ruzu.onrender.com/api/courses",
         { title, description },
         {
           headers: {

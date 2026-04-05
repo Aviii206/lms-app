@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:5000/api/tests";
+const API_URL = "https://lms-app-backend-ruzu.onrender.com/api/tests";
 
 const getConfig = () => {
   const userInfo = JSON.parse(localStorage.getItem("userInfo"));

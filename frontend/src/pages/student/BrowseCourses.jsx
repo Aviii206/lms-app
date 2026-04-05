@@ -10,7 +10,7 @@ const BrowseCourses = () => {
   const fetchCourses = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:5000/api/courses",
+        "https://lms-app-backend-ruzu.onrender.com/api/courses",
         {
           headers: {
             Authorization: `Bearer ${user.token}`,
@@ -27,7 +27,7 @@ const BrowseCourses = () => {
   const handleEnroll = async (courseId) => {
     try {
       await axios.post(
-        `http://localhost:5000/api/courses/${courseId}/enroll`,
+        `https://lms-app-backend-ruzu.onrender.com/api/courses/${courseId}/enroll`,
         {},
         {
           headers: {

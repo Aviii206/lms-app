@@ -12,7 +12,7 @@ const TeacherDashboard = () => {
   useEffect(() => {
     const fetchDashboard = async () => {
       const { data } = await axios.get(
-        "http://localhost:5000/api/courses/teacher/dashboard",
+        "https://lms-app-backend-ruzu.onrender.com/api/courses/teacher/dashboard",
         {
           headers: {
             Authorization: `Bearer ${user.token}`,

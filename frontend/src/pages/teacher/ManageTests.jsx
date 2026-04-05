@@ -11,7 +11,7 @@ const ManageTests = () => {
 
   const fetchTests = async () => {
     try {
-      const { data } = await axios.get("http://localhost:5000/api/tests/teacher", {
+      const { data } = await axios.get("https://lms-app-backend-ruzu.onrender.com/api/tests/teacher", {
         headers: { Authorization: `Bearer ${user.token}` }
       });
       setTests(data);
@@ -27,7 +27,7 @@ const ManageTests = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this test? All student attempts will be lost.")) {
       try {
-        await axios.delete(`http://localhost:5000/api/tests/${id}`, {
+        await axios.delete(`https://lms-app-backend-ruzu.onrender.com/api/tests/${id}`, {
           headers: { Authorization: `Bearer ${user.token}` }
         });
         fetchTests();

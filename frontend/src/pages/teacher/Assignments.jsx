@@ -16,7 +16,7 @@ const Assignments = () => {
   useEffect(() => {
     const fetchCourses = async () => {
       const { data } = await axios.get(
-        "http://localhost:5000/api/courses/teacher/dashboard",
+        "https://lms-app-backend-ruzu.onrender.com/api/courses/teacher/dashboard",
         {
           headers: {
             Authorization: `Bearer ${user.token}`,
@@ -35,7 +35,7 @@ const Assignments = () => {
 
     try {
       await axios.post(
-        `http://localhost:5000/api/assignments/${selectedCourse}`,
+        `https://lms-app-backend-ruzu.onrender.com/api/assignments/${selectedCourse}`,
         { title, description, dueDate },
         {
           headers: {
