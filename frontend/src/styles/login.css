@@ -210,3 +210,19 @@ form input:focus {
   color: #1d4ed8;
   text-decoration: underline;
 }
+
+/* Mobile Responsiveness */
+@media screen and (max-width: 480px) {
+  .login-card {
+    width: 90%;
+    padding: 30px 20px;
+  }
+  
+  .role-toggle {
+    flex-direction: column;
+  }
+  
+  .logo-section h1 {
+    font-size: 26px;
+  }
+}

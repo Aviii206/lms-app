@@ -54,3 +54,29 @@
   background: #3b82f6;
   color: white !important;
 }
+
+/* Mobile Responsiveness */
+@media screen and (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    padding: 15px;
+    flex-direction: row;
+    overflow-x: auto;
+    background: #0f172a;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+  
+  .sidebar.collapsed {
+    width: 100%;
+  }
+  
+  .sidebar h3 {
+    display: none;
+  }
+  
+  .sidebar a {
+    margin: 0 5px;
+    flex-shrink: 0;
+  }
+}
