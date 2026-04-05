@@ -2,10 +2,12 @@ import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import DashboardLayout from "../../components/layout/DashboardLayout";
 import { AuthContext } from "../../context/AuthContext";
+import BookLoader from "../../components/common/BookLoader";
 
 const BrowseCourses = () => {
   const { user } = useContext(AuthContext);
   const [courses, setCourses] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const fetchCourses = async () => {
     try {
@@ -21,6 +23,8 @@ const BrowseCourses = () => {
       setCourses(data);
     } catch (error) {
       console.error(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -46,6 +50,14 @@ const BrowseCourses = () => {
   useEffect(() => {
     fetchCourses();
   }, []);
+
+  if (loading) {
+    return (
+      <DashboardLayout>
+        <BookLoader message="Fetching available courses..." />
+      </DashboardLayout>
+    );
+  }
 
   return (
     <DashboardLayout>

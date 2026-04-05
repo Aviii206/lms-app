@@ -3,11 +3,13 @@ import axios from "axios";
 import DashboardLayout from "../../components/layout/DashboardLayout";
 import { AuthContext } from "../../context/AuthContext";
 import StatCard from "../../components/common/StatCard";
+import BookLoader from "../../components/common/BookLoader";
 import "../../styles/dashboard.css";
 
 const TeacherDashboard = () => {
   const { user } = useContext(AuthContext);
   const [dashboard, setDashboard] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchDashboard = async () => {
@@ -21,10 +23,19 @@ const TeacherDashboard = () => {
       );
 
       setDashboard(data);
+      setLoading(false);
     };
 
     fetchDashboard();
   }, []);
+
+  if (loading) {
+    return (
+      <DashboardLayout>
+        <BookLoader message="Fetching your dashboard insights..." />
+      </DashboardLayout>
+    );
+  }
 
   return (
     <DashboardLayout>

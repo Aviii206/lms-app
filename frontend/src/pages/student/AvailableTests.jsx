@@ -2,9 +2,11 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import DashboardLayout from "../../components/layout/DashboardLayout";
 import { getAvailableTests } from "../../services/testService";
+import BookLoader from "../../components/common/BookLoader";
 
 const AvailableTests = () => {
   const [tests, setTests] = useState([]);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -14,10 +16,20 @@ const AvailableTests = () => {
         setTests(data);
       } catch (err) {
         console.error("Error fetching available tests", err);
+      } finally {
+        setLoading(false);
       }
     };
     fetchObj();
   }, []);
+
+  if (loading) {
+    return (
+      <DashboardLayout>
+        <BookLoader message="Scanning for active exams..." />
+      </DashboardLayout>
+    );
+  }
 
   return (
     <DashboardLayout>

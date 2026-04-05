@@ -3,10 +3,12 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import DashboardLayout from "../../components/layout/DashboardLayout";
 import { AuthContext } from "../../context/AuthContext";
+import BookLoader from "../../components/common/BookLoader";
 
 const ManageTests = () => {
   const { user } = useContext(AuthContext);
   const [tests, setTests] = useState([]);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   const fetchTests = async () => {
@@ -17,6 +19,8 @@ const ManageTests = () => {
       setTests(data);
     } catch (err) {
       console.error("Failed to fetch tests", err);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -36,6 +40,14 @@ const ManageTests = () => {
       }
     }
   };
+
+  if (loading) {
+    return (
+      <DashboardLayout>
+        <BookLoader message="Fetching test configurations..." />
+      </DashboardLayout>
+    );
+  }
 
   return (
     <DashboardLayout>
