@@ -10,7 +10,7 @@ const MyAssignments = () => {
   useEffect(() => {
     const fetchAssignments = async () => {
       const res = await axios.get(
-        (import.meta.env.VITE_API_BASE_URL || "http://localhost:5000") + "/api/assignments/student",
+        "https://lms-app-backend-ruzu.onrender.com/api/assignments/student",
         {
           headers: {
             Authorization: `Bearer ${user.token}`,
@@ -30,7 +30,7 @@ const MyAssignments = () => {
     if (!content) return;
 
     await axios.post(
-      `${import.meta.env.VITE_API_BASE_URL || "http://localhost:5000"}/api/assignments/submit/${assignmentId}`,
+      `https://lms-app-backend-ruzu.onrender.com/api/assignments/submit/${assignmentId}`,
       { content },
       {
         headers: {

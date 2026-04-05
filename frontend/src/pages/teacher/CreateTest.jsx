@@ -22,7 +22,7 @@ const CreateTest = () => {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const { data } = await axios.get((import.meta.env.VITE_API_BASE_URL || "http://localhost:5000") + "/api/courses/teacher/dashboard", {
+        const { data } = await axios.get("https://lms-app-backend-ruzu.onrender.com/api/courses/teacher/dashboard", {
           headers: { Authorization: `Bearer ${user.token}` }
         });
         setCourses(data.courses);
@@ -38,12 +38,12 @@ const CreateTest = () => {
     try {
       if (questions.length === 0) return alert("Add at least one question!");
       
-      const testRes = await axios.post((import.meta.env.VITE_API_BASE_URL || "http://localhost:5000") + "/api/tests", testData, {
+      const testRes = await axios.post("https://lms-app-backend-ruzu.onrender.com/api/tests", testData, {
         headers: { Authorization: `Bearer ${user.token}` }
       });
       const newTest = testRes.data;
 
-      await axios.put(`${import.meta.env.VITE_API_BASE_URL || "http://localhost:5000"}/api/tests/${newTest._id}/questions`, { questions }, {
+      await axios.put(`https://lms-app-backend-ruzu.onrender.com/api/tests/${newTest._id}/questions`, { questions }, {
         headers: { Authorization: `Bearer ${user.token}` }
       });
 

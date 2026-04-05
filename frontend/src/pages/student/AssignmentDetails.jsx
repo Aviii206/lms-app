@@ -12,7 +12,7 @@ const AssignmentDetails = () => {
   useEffect(() => {
     const fetchAssignments = async () => {
       const { data } = await axios.get(
-        (import.meta.env.VITE_API_BASE_URL || "http://localhost:5000") + "/api/assignments/student",
+        "https://lms-app-backend-ruzu.onrender.com/api/assignments/student",
         {
           headers: {
             Authorization: `Bearer ${user.token}`,

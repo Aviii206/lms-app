@@ -25,7 +25,7 @@ const EditTest = () => {
   useEffect(() => {
     const fetchInitData = async () => {
       try {
-        const courseRes = await axios.get((import.meta.env.VITE_API_BASE_URL || "http://localhost:5000") + "/api/courses/teacher/dashboard", {
+        const courseRes = await axios.get("https://lms-app-backend-ruzu.onrender.com/api/courses/teacher/dashboard", {
           headers: { Authorization: `Bearer ${user.token}` }
         });
         setCourses(courseRes.data.courses);
