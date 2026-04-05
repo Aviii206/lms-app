@@ -3,10 +3,12 @@ import axios from "axios";
 import DashboardLayout from "../../components/layout/DashboardLayout";
 import { AuthContext } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import BookLoader from "../../components/common/BookLoader";
 
 const MyCourses = () => {
   const { user } = useContext(AuthContext);
   const [courses, setCourses] = useState([]);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -21,10 +23,19 @@ const MyCourses = () => {
       );
 
       setCourses(data.courses);
+      setLoading(false);
     };
 
     fetchCourses();
   }, []);
+
+  if (loading) {
+    return (
+      <DashboardLayout>
+        <BookLoader message="Loading your courses..." />
+      </DashboardLayout>
+    );
+  }
 
   return (
     <DashboardLayout>

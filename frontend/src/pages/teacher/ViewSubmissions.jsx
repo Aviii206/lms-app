@@ -2,10 +2,12 @@ import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import DashboardLayout from "../../components/layout/DashboardLayout";
 import { AuthContext } from "../../context/AuthContext";
+import BookLoader from "../../components/common/BookLoader";
 
 const ViewSubmissions = () => {
   const { user } = useContext(AuthContext);
   const [submissions, setSubmissions] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const fetchSubmissions = async () => {
     const { data } = await axios.get(
@@ -18,6 +20,7 @@ const ViewSubmissions = () => {
     );
 
     setSubmissions(data);
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -42,6 +45,14 @@ const ViewSubmissions = () => {
     alert("Graded!");
     fetchSubmissions();
   };
+
+  if (loading) {
+    return (
+      <DashboardLayout>
+        <BookLoader message="Fetching student submissions..." />
+      </DashboardLayout>
+    );
+  }
 
   return (
     <DashboardLayout>

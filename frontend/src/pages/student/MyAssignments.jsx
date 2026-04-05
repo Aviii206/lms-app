@@ -2,10 +2,12 @@ import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import DashboardLayout from "../../components/layout/DashboardLayout";
 import { AuthContext } from "../../context/AuthContext";
+import BookLoader from "../../components/common/BookLoader";
 
 const MyAssignments = () => {
   const { user } = useContext(AuthContext);
   const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchAssignments = async () => {
@@ -19,6 +21,7 @@ const MyAssignments = () => {
       );
 
       setData(res.data);
+      setLoading(false);
     };
 
     fetchAssignments();
@@ -41,6 +44,14 @@ const MyAssignments = () => {
 
     alert("Submitted!");
   };
+
+  if (loading) {
+    return (
+      <DashboardLayout>
+        <BookLoader message="Loading your assignments..." />
+      </DashboardLayout>
+    );
+  }
 
   return (
     <DashboardLayout>
