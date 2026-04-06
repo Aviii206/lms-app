@@ -88,9 +88,16 @@ export const updateTest = async (req, res) => {
 
     await Question.deleteMany({ test: test._id });
     if (questions && questions.length > 0) {
-       // Only insert fields from Question model, removing _id if it exists to let Mongoose generate new ones securely
+       // Only insert fields from Question model, removing internal fields
        const cleanQs = questions.map(q => {
-         const { _id, ...rest } = q;
+         const { _id, createdAt, updatedAt, __v, ...rest } = q;
+         // Clean _id from options array if they exist to prevent Document Validation errors
+         if (rest.options && Array.isArray(rest.options)) {
+           rest.options = rest.options.map(opt => {
+             const { _id: optId, ...optRest } = opt;
+             return optRest;
+           });
+         }
          return { ...rest, test: test._id };
        });
        await Question.insertMany(cleanQs);

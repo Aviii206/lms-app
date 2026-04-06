@@ -44,7 +44,7 @@ const QuestionBuilder = ({ questions, setQuestions }) => {
       </div>
 
       {questions.map((q, qIndex) => (
-        <div key={q.id} className="lms-card" style={{ marginBottom: "20px", background: "#f8fafc" }}>
+        <div key={q.id || q._id} className="lms-card" style={{ marginBottom: "20px", background: "#f8fafc" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "15px" }}>
             <strong style={{ fontSize: "16px", color: "#0f172a" }}>Question {qIndex + 1} ({q.type})</strong>
             <button type="button" className="btn-danger" style={{ padding: "6px 12px", fontSize: "12px" }} onClick={() => removeQuestion(qIndex)}>Remove</button>
@@ -72,7 +72,7 @@ const QuestionBuilder = ({ questions, setQuestions }) => {
                 <div key={oIndex} style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "5px" }}>
                   <input
                     type="radio"
-                    name={`correct-${q.id}`}
+                    name={`correct-${q.id || q._id}`}
                     checked={opt.isCorrect}
                     onChange={() => {
                       const newQ = [...questions];
