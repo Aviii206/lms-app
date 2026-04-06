@@ -191,6 +191,28 @@ form input:focus {
   box-shadow: 0 2px 4px -1px rgba(59, 130, 246, 0.3);
 }
 
+.signin-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid white;
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 1s linear infinite;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
 /* Auth Links */
 .auth-link-box {
   margin-top:20px;

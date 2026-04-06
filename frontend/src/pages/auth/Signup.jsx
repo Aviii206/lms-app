@@ -11,9 +11,11 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("student");
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     try {
       await register(name, email, password, role);
@@ -27,6 +29,8 @@ const Signup = () => {
       }
     } catch (error) {
       alert(error.response?.data?.message || "Registration failed");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -88,8 +92,10 @@ const Signup = () => {
             required
           />
 
-          <button className="signin-btn" type="submit">
-            Create Account
+          <button className="signin-btn" type="submit" disabled={loading}>
+            {loading ? (
+              <><span className="btn-spinner"></span> Creating Account...</>
+            ) : "Create Account"}
           </button>
           <div className="auth-link-box">
             Already have an account? <a href="/">Log in</a>

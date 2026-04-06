@@ -10,9 +10,11 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("student");
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     try {
       await login(email, password, role);
@@ -26,6 +28,8 @@ const Login = () => {
       }
     } catch (error) {
       alert(error.response?.data?.message || "Login failed");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -84,8 +88,10 @@ const Login = () => {
             required
           />
 
-          <button className="signin-btn" type="submit">
-            Sign In
+          <button className="signin-btn" type="submit" disabled={loading}>
+            {loading ? (
+              <><span className="btn-spinner"></span> Signing In...</>
+            ) : "Sign In"}
           </button>
           <div className="auth-link-box">
             Don't have an account? <a href="/signup">Sign up</a>
