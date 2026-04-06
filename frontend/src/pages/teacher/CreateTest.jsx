@@ -37,8 +37,14 @@ const CreateTest = () => {
     e.preventDefault();
     try {
       if (questions.length === 0) return alert("Add at least one question!");
-      
-      const testRes = await axios.post("https://lms-app-backend-ruzu.onrender.com/api/tests", testData, {
+      // Convert local datetime strings to absolute UTC ISO strings before sending
+      const payload = {
+        ...testData,
+        startTime: testData.startTime ? new Date(testData.startTime).toISOString() : null,
+        endTime: testData.endTime ? new Date(testData.endTime).toISOString() : null,
+      };
+
+      const testRes = await axios.post("https://lms-app-backend-ruzu.onrender.com/api/tests", payload, {
         headers: { Authorization: `Bearer ${user.token}` }
       });
       const newTest = testRes.data;

@@ -14,6 +14,14 @@ const EditTest = () => {
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // Helper to correctly bind UTC db dates to local datetime-local inputs
+  const toLocalISOString = (dateInput) => {
+    if (!dateInput) return "";
+    const date = new Date(dateInput);
+    date.setMinutes(date.getMinutes() - date.getTimezoneOffset());
+    return date.toISOString().slice(0, 16);
+  };
+
   const [testData, setTestData] = useState({
     title: "", description: "", courseId: "", durationMinutes: 60,
     startTime: "", endTime: "",
@@ -37,8 +45,8 @@ const EditTest = () => {
           description: t.description || "",
           courseId: t.course._id,
           durationMinutes: t.durationMinutes,
-          startTime: t.startTime ? new Date(t.startTime).toISOString().slice(0, 16) : "",
-          endTime: t.endTime ? new Date(t.endTime).toISOString().slice(0, 16) : "",
+          startTime: toLocalISOString(t.startTime),
+          endTime: toLocalISOString(t.endTime),
           settings: t.settings || { shuffleQuestions: false, shuffleOptions: false, negativeMarking: false }
         });
         setQuestions(testRes.questions || []);
@@ -55,7 +63,14 @@ const EditTest = () => {
     e.preventDefault();
     try {
       if (questions.length === 0) return alert("Add at least one question!");
-      const payload = { ...testData, questions };
+      
+      const payload = { 
+        ...testData, 
+        startTime: testData.startTime ? new Date(testData.startTime).toISOString() : null,
+        endTime: testData.endTime ? new Date(testData.endTime).toISOString() : null,
+        questions 
+      };
+      
       await updateTest(id, payload);
       alert("Test Updated Successfully!");
       navigate("/teacher/manage-tests");
