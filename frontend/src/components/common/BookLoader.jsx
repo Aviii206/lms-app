@@ -5,7 +5,9 @@ const BookLoader = ({ message = "Loading..." }) => {
   return (
     <div className="book-loader-container">
       <div className="book-loader">
-        <div className="book-page"></div>
+        <div className="dot"></div>
+        <div className="dot"></div>
+        <div className="dot"></div>
       </div>
       {message && <div className="book-text">{message}</div>}
     </div>
