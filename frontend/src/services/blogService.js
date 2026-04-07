@@ -1,8 +1,7 @@
 import axios from "axios";
 
-// Using local endpoint since these routes are not deployed to Render yet.
-// NOTE: Make sure the local backend server is running on port 5000!
-const API_URL = "http://localhost:5000/api/blogs/";
+const BASE_URL = "https://lms-app-backend-ruzu.onrender.com";
+const API_URL = `${BASE_URL}/api/blogs/`;
 
 export const getPublicBlogs = async () => {
   const response = await axios.get(API_URL + "public");
@@ -47,7 +46,7 @@ export const addComment = async (blogId, text, token) => {
 
 export const uploadFile = async (formData, token) => {
   const response = await axios.post(
-    "http://localhost:5000/api/upload",
+    `${BASE_URL}/api/upload`,
     formData,
     {
       headers: {
