@@ -8,14 +8,14 @@ const Navbar = ({ toggle }) => {
   return (
     <div className="navbar">
       <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
-        <button onClick={toggle} className="btn-secondary" style={{ padding: "8px 12px", border: "none", background: "transparent", fontSize: "18px" }}>
+        <button onClick={toggle} className="btn-secondary" style={{ padding: "8px 12px", border: "none", background: "transparent", fontSize: "18px", cursor: "pointer" }}>
           ☰
         </button>
-        <h2 style={{ fontSize: "20px", color: "#0f172a", margin: 0 }}>LearnHub</h2>
+        {/* Placeholder for future Ethereal Search */}
       </div>
 
       <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
-        <span style={{ fontWeight: 600, color: "#475569" }}>{user.name}</span>
+        <span style={{ fontWeight: 700, color: "#1f2937", fontSize: "15px" }}>{user.name}</span>
         <button onClick={logout} className="logout-btn">
           Logout
         </button>

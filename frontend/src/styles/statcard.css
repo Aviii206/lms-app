@@ -1,9 +1,9 @@
 .stat-card{
-  background: white;
-  padding: 24px;
-  border-radius: 16px;
-  box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
-  border: 1px solid #e2e8f0;
+  background: white; /* Lumina: surface_container_lowest */
+  padding: 32px;
+  border-radius: 24px; /* Soft shapes */
+  box-shadow: 0px 12px 32px rgba(44, 52, 55, 0.06);
+  border: none;
   flex: 1;
   text-align: center;
   transition: all 0.3s;
@@ -14,23 +14,24 @@
 
 .stat-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 20px 25px -5px rgba(0,0,0,0.08);
+  box-shadow: 0px 16px 40px rgba(44, 52, 55, 0.08); /* Lift shadow */
+  background: #fcfcfc;
 }
 
-.stat-card h3{
-  margin-bottom: 8px;
-  color: #64748b;
-  font-size: 15px;
+.stat-card h4{
+  margin-bottom: 12px;
+  color: #596064; /* Lumina: on_surface_variant */
+  font-size: 14px;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.05em; /* Editorial tracking */
 }
 
-.stat-card p{
-  font-size: 36px;
+.stat-card h2{
+  font-size: 42px;
   font-weight: 800;
-  color: #0f172a;
-  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: #0b0f10;
+  background: linear-gradient(135deg, #216299 0%, #82baf7 100%); /* Lumina primary gradient */
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;

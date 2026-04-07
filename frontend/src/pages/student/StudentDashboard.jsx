@@ -43,20 +43,27 @@ const StudentDashboard = () => {
 
       {dashboard && (
         <>
-          <div className="stats-container">
-            <StatCard
-              title="Enrolled Courses"
-              value={dashboard.totalEnrolled}
-            />
+          <div className="dashboard-header">
+            <h1>Welcome back, {user.name}!</h1>
+            <p className="dashboard-subtitle">
+              You are enrolled in <strong>{dashboard.totalEnrolled} courses</strong>. Keep up the momentum.
+            </p>
           </div>
 
-          <h3 style={{ marginTop: "30px" }}>My Courses</h3>
+          <div className="section-header">
+            <h3>Active Courses</h3>
+            <a href="/student/browse-courses" className="view-all">View All</a>
+          </div>
 
           <div className="courses-grid">
-            {dashboard.courses.map((course) => (
-              <div key={course._id} className="course-card">
+            {dashboard.courses.map((course, index) => (
+              <div key={course._id} className="course-card ethereal-card">
+                <div className={`course-icon icon-color-${index % 3}`}>
+                  📚
+                </div>
                 <h4>{course.title}</h4>
                 <p>{course.description}</p>
+                <div className="progress-bar-placeholder"></div>
               </div>
             ))}
           </div>

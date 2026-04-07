@@ -1,26 +1,28 @@
 .navbar {
-  background: white;
-  padding: 15px 30px;
+  background: white; /* Matches main bg */
+  padding: 20px 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #e2e8f0;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+  border-bottom: 1px solid #f0f4f7;
+  /* Removed shadow for flattened aesthetic */
 }
 
 .navbar .logout-btn {
-  background: #f1f5f9;
-  color: #ef4444;
-  border: 1px solid #e2e8f0;
-  padding: 8px 16px;
-  border-radius: 8px;
-  font-weight: 600;
+  background: #f0f4f7;
+  color: #1f2937;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 9999px; /* Pill shape */
+  font-weight: 700;
+  font-size: 14px;
   transition: all 0.2s ease;
   cursor: pointer;
 }
 
 .navbar .logout-btn:hover {
-  background: #fee2e2;
-  border-color: #fca5a5;
+  background: #fa746f; /* Danger */
+  color: #ffffff;
   transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(250, 116, 111, 0.2);
 }

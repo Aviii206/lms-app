@@ -18,7 +18,7 @@ const Sidebar = ({ collapsed }) => {
   return (
     <div className={`sidebar ${collapsed ? "collapsed" : ""}`}>
       <h3 style={{ overflow: "hidden", whiteSpace: "nowrap" }}>
-        {collapsed ? "LMS" : "LMS Menu"}
+        {collapsed ? "LH" : "LearnHub"}
       </h3>
 
       {user.role === "student" && (

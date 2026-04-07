@@ -1,7 +1,7 @@
 .dashboard {
   display: flex;
   height: 100vh;
-  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  background: #f0f4f7; /* Lumina: surface_container_low */
 }
 
 .main {
