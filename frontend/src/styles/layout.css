@@ -25,5 +25,6 @@
   }
   .content {
     padding: 15px 20px;
+    padding-bottom: 90px; /* Safe zone for bottom navigation tab bar */
   }
 }

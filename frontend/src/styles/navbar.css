@@ -26,3 +26,17 @@
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(250, 116, 111, 0.2);
 }
+
+.mobile-brand {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .sidebar-toggle {
+    display: none !important;
+  }
+  
+  .mobile-brand {
+    display: block !important;
+  }
+}

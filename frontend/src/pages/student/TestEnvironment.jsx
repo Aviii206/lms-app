@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { startAttempt, syncAttempt, submitAttempt } from "../../services/attemptService";
 import TimerDisplay from "../../components/test/student/TimerDisplay";
+import "../../styles/testenv.css";
 
 const TestEnvironment = () => {
   const { id: testId } = useParams();
@@ -125,7 +126,7 @@ const TestEnvironment = () => {
   const currentQ = questions[currentIndex];
 
   return (
-    <div style={{ padding: "40px 20px", maxWidth: "900px", margin: "0 auto", height: "100vh" }}>
+    <div className="test-env-wrapper">
       
       {showWarning && (
         <div style={{ position: "fixed", top: 0, left: 0, width: "100%", height: "100%", background: "rgba(239,68,68,0.95)", color: "white", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", zIndex: 9999 }}>
@@ -135,76 +136,109 @@ const TestEnvironment = () => {
         </div>
       )}
 
-      <div className="lms-card" style={{ display: "flex", justifyContent: "space-between", marginBottom: "25px", padding: "20px 25px" }}>
-        <h3 style={{ margin: 0, alignSelf: "center", color: "#0f172a" }}>Test In Progress</h3>
-        <TimerDisplay expectedEndTime={attemptData.test?.endTime || new Date(new Date().getTime() + 60*60*1000)} onTimeUp={handleFinalSubmit} />
+      {/* Main Column */}
+      <div className="test-main-area">
+        <div className="test-header">
+          <div className="test-header-title">Lumina Academy: Final Examination</div>
+          <button onClick={handleFinalSubmit} className="btn-finish">Finish Test</button>
+        </div>
+
+        <div className="test-content-scroll">
+          <div className="test-card">
+            <div className="question-badge">
+              Question {currentIndex + 1} of {questions.length}
+            </div>
+            
+            <div className="question-text">
+              {currentQ.text}
+            </div>
+
+            {currentQ.type === "MCQ" && (
+              <div className="options-container">
+                {currentQ.options.map((opt, idx) => {
+                  const isSelected = answers[currentQ._id]?.selectedOptionId === opt._id;
+                  const letter = String.fromCharCode(65 + idx); // A, B, C, D
+                  return (
+                    <label key={opt._id} className={`option-pill ${isSelected ? 'selected' : ''}`}>
+                      <input 
+                        type="radio" 
+                        name={`q-${currentQ._id}`} 
+                        value={opt._id}
+                        checked={isSelected}
+                        onChange={() => handleAnswerChange(currentQ._id, opt._id, null)}
+                        style={{ display: "none" }} /* Hidden native radio */
+                      />
+                      <div className="option-letter">{letter}</div>
+                      <div className="option-text">{opt.text}</div>
+                    </label>
+                  );
+                })}
+              </div>
+            )}
+
+            {currentQ.type === "SHORT_ANSWER" && (
+              <div style={{ flex: 1 }}>
+                <textarea 
+                  rows="6" 
+                  placeholder="Type your answer here..."
+                  style={{ width: "100%", background: "#f0f4f7", padding: "20px", borderRadius: "12px", border: "none", fontSize: "16px", outline: "none" }}
+                  value={answers[currentQ._id]?.textResponse || ""}
+                  onChange={(e) => handleAnswerChange(currentQ._id, null, e.target.value)}
+                />
+              </div>
+            )}
+
+            <div className="test-actions">
+              <button 
+                disabled={currentIndex === 0} 
+                onClick={() => setCurrentIndex(currentIndex - 1)} 
+                className="btn-nav-prev"
+                style={{ opacity: currentIndex === 0 ? 0.3 : 1 }}
+              >
+                ← Previous Question
+              </button>
+              
+              {currentIndex < questions.length - 1 ? (
+                <button onClick={() => setCurrentIndex(currentIndex + 1)} className="btn-nav-next">
+                  Next Question →
+                </button>
+              ) : (
+                <div style={{width: '200px'}}></div> /* Spacer */
+              )}
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div style={{ display: "flex", gap: "30px" }}>
-        <div className="lms-card" style={{ width: "240px", padding: "20px" }}>
-          <h4 style={{ marginBottom: "15px", color: "#475569" }}>Questions Grid</h4>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
-            {questions.map((q, idx) => (
-              <button 
+      {/* Right Sidebar Column */}
+      <div className="test-sidebar">
+        <div className="timer-box">
+          <div className="timer-icon">⏱️</div>
+          <div className="timer-time">
+            <TimerDisplay expectedEndTime={attemptData.test?.endTime || new Date(new Date().getTime() + 60*60*1000)} onTimeUp={handleFinalSubmit} />
+          </div>
+          <div className="timer-label">TIME REMAINING</div>
+        </div>
+
+        <div className="grid-balls">
+          {questions.map((q, idx) => {
+            let status = "unvisited";
+            if (currentIndex === idx) status = "current";
+            else if (answers[q._id]) status = "answered";
+
+            return (
+              <div 
                 key={q._id} 
                 onClick={() => setCurrentIndex(idx)}
-                style={{ 
-                  width: "40px", height: "40px", fontSize: "14px",
-                  background: currentIndex === idx ? "#3b82f6" : (answers[q._id] ? "#10b981" : "#f8fafc"),
-                  color: currentIndex === idx ? "#fff" : (answers[q._id] ? "#fff": "#475569"),
-                  border: currentIndex === idx || answers[q._id] ? "none" : "1px solid #cbd5e1", 
-                  borderRadius: "8px", cursor: "pointer", fontWeight: "600", transition: "all 0.2s"
-                }}
+                className={`bubble ${status}`}
               >
                 {idx + 1}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <div className="lms-card" style={{ flex: 1, padding: "30px", minHeight: "400px", display: "flex", flexDirection: "column" }}>
-          <h4 style={{ color: "#64748b", textTransform: "uppercase", letterSpacing: "0.5px", fontSize: "13px", marginBottom: "10px" }}>Question {currentIndex + 1} of {questions.length}</h4>
-          <p style={{ fontSize: "18px", fontWeight: "600", color: "#0f172a", marginBottom: "25px", lineHeight: "1.6" }}>{currentQ.text}</p>
-          
-          {currentQ.type === "MCQ" && (
-            <div style={{ display: "flex", flexDirection: "column", gap: "12px", flex: 1 }}>
-              {currentQ.options.map((opt) => (
-                <label key={opt._id} style={{ display: "flex", alignItems: "center", padding: "15px", border: "1px solid", borderColor: answers[currentQ._id]?.selectedOptionId === opt._id ? "#3b82f6" : "#e2e8f0", background: answers[currentQ._id]?.selectedOptionId === opt._id ? "#eff6ff" : "white", borderRadius: "12px", cursor: "pointer", transition: "all 0.2s" }}>
-                  <input 
-                    type="radio" 
-                    name={`q-${currentQ._id}`} 
-                    value={opt._id}
-                    checked={answers[currentQ._id]?.selectedOptionId === opt._id}
-                    onChange={() => handleAnswerChange(currentQ._id, opt._id, null)}
-                    style={{ marginRight: "12px", width: "18px", height: "18px", accentColor: "#3b82f6" }}
-                  />
-                  <span style={{ fontSize: "15px", color: answers[currentQ._id]?.selectedOptionId === opt._id ? "#1d4ed8" : "#334155", fontWeight: answers[currentQ._id]?.selectedOptionId === opt._id ? "500" : "400" }}>{opt.text}</span>
-                </label>
-              ))}
-            </div>
-          )}
-
-          {currentQ.type === "SHORT_ANSWER" && (
-            <div style={{ flex: 1 }}>
-              <textarea 
-                rows="6" 
-                placeholder="Type your answer here..."
-                value={answers[currentQ._id]?.textResponse || ""}
-                onChange={(e) => handleAnswerChange(currentQ._id, null, e.target.value)}
-              />
-            </div>
-          )}
-
-          <div style={{ marginTop: "40px", paddingTop: "20px", borderTop: "1px solid #e2e8f0", display: "flex", justifyContent: "space-between" }}>
-             <button disabled={currentIndex === 0} onClick={() => setCurrentIndex(currentIndex - 1)} className={currentIndex === 0 ? "btn-disabled" : "btn-secondary"}>Previous</button>
-             {currentIndex < questions.length - 1 ? (
-               <button onClick={() => setCurrentIndex(currentIndex + 1)} className="btn-primary">Next</button>
-             ) : (
-               <button onClick={handleFinalSubmit} className="btn-success">Submit Test</button>
-             )}
-          </div>
+              </div>
+            );
+          })}
         </div>
       </div>
+
     </div>
   );
 };

@@ -43,25 +43,30 @@ const TeacherDashboard = () => {
 
       {dashboard && (
         <>
-          <div className="stats-container">
-            <StatCard
-              title="Total Courses"
-              value={dashboard.totalCourses}
-            />
-            <StatCard
-              title="Total Students"
-              value={dashboard.totalStudents}
-            />
+          <div className="dashboard-header">
+            <h1>Welcome back, {user.name}!</h1>
+            <p className="dashboard-subtitle">
+              You are managing <strong>{dashboard.totalCourses} courses</strong> with a total of <strong>{dashboard.totalStudents} students</strong>.
+            </p>
           </div>
 
-          <h3 style={{ marginTop: "30px" }}>My Courses</h3>
+          <div className="section-header">
+            <h3>Active Courses</h3>
+            <a href="/teacher/my-courses" className="view-all">View All</a>
+          </div>
 
           <div className="courses-grid">
-            {dashboard.courses.map((course) => (
-              <div key={course._id} className="course-card">
+            {dashboard.courses.map((course, index) => (
+              <div key={course._id} className="course-card ethereal-card">
+                <div className={`course-icon icon-color-${index % 3}`}>
+                  👨‍🏫
+                </div>
                 <h4>{course.title}</h4>
                 <p>{course.description}</p>
-                <p>Students: {course.students.length}</p>
+                <div className="progress-bar-placeholder"></div>
+                <p style={{ marginTop: "auto", fontSize: "13px", fontWeight: "600", color: "#1f2937" }}>
+                  Students Enrolled: {course.students.length}
+                </p>
               </div>
             ))}
           </div>
