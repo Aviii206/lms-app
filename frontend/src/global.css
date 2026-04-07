@@ -78,3 +78,44 @@ tr:hover td {
     -webkit-overflow-scrolling: touch;
   }
 }
+
+/* ================================================================
+   CUSTOM SCROLLBARS — Ethereal Clean Light Theme
+   Applies globally to every scrollable element on the website.
+   ================================================================ */
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #c7d8ec #f0f4f7;
+}
+
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;       /* for horizontal scrollbars */
+}
+
+::-webkit-scrollbar-track {
+  background: #f0f4f7;              /* Lumina surface_container_low */
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c7d8ec;              /* muted Lumina primary tint */
+  border-radius: 9999px;
+  transition: background 0.2s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #82baf7;              /* Lumina primary — brightens on hover */
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: #216299;              /* Lumina primary dark — pressed */
+}
+
+/* Corner where vertical + horizontal scrollbars meet */
+::-webkit-scrollbar-corner {
+  background: #f0f4f7;
+}

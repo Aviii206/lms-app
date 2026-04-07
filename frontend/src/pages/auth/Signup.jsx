@@ -35,72 +35,74 @@ const Signup = () => {
   };
 
   return (
-    <div className="login-page">
-      <div className="logo-section">
-        <div className="logo">🎓</div>
-        <h1>LearnHub</h1>
-        <p>Create your new account</p>
-      </div>
-
-      <div className="login-card">
-        <h2>Join Us</h2>
-        <p className="subtitle">Sign up to start learning or teaching</p>
-
-        <p className="role-text">I want to register as a...</p>
-        <div className="role-toggle">
-          <button
-            type="button"
-            className={role === "student" ? "active" : ""}
-            onClick={() => setRole("student")}
-          >
-            📘 Student
-          </button>
-          <button
-            type="button"
-            className={role === "teacher" ? "active" : ""}
-            onClick={() => setRole("teacher")}
-          >
-            👨‍🏫 Teacher
-          </button>
+    <div className="login-page" style={{ alignItems: "center", justifyContent: "center", overflow: "auto" }}>
+      <div style={{ width: "100%", maxWidth: "480px", padding: "40px 24px", boxSizing: "border-box" }}>
+        <div className="logo-section">
+          <div className="logo">🎓</div>
+          <h1>LearnHub</h1>
+          <p>Create your new account</p>
         </div>
 
-        <form onSubmit={handleSubmit}>
-          <label>Full Name</label>
-          <input
-            type="text"
-            placeholder="Alex Carter"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
+        <div className="login-card">
+          <h2>Join Us</h2>
+          <p className="subtitle">Sign up to start learning or teaching</p>
 
-          <label>Email</label>
-          <input
-            type="email"
-            placeholder="alex@student.edu"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-
-          <label>Password</label>
-          <input
-            type="password"
-            placeholder="Enter password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-
-          <button className="signin-btn" type="submit" disabled={loading}>
-            {loading ? (
-              <><span className="btn-spinner"></span> Creating Account...</>
-            ) : "Create Account"}
-          </button>
-          <div className="auth-link-box">
-            Already have an account? <a href="/">Log in</a>
+          <p className="role-text">I want to register as a...</p>
+          <div className="role-toggle">
+            <button
+              type="button"
+              className={role === "student" ? "active" : ""}
+              onClick={() => setRole("student")}
+            >
+              📘 Student
+            </button>
+            <button
+              type="button"
+              className={role === "teacher" ? "active" : ""}
+              onClick={() => setRole("teacher")}
+            >
+              👨‍🏫 Teacher
+            </button>
           </div>
-        </form>
+
+          <form onSubmit={handleSubmit}>
+            <label>Full Name</label>
+            <input
+              type="text"
+              placeholder="Alex Carter"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
+
+            <label>Email</label>
+            <input
+              type="email"
+              placeholder="alex@student.edu"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+
+            <label>Password</label>
+            <input
+              type="password"
+              placeholder="Enter password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+
+            <button className="signin-btn" type="submit" disabled={loading}>
+              {loading ? (
+                <><span className="btn-spinner"></span> Creating Account...</>
+              ) : "Create Account"}
+            </button>
+            <div className="auth-link-box">
+              Already have an account? <a href="/">Log in</a>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );

@@ -23,6 +23,7 @@ const TestEnvironment = lazy(() => import("./pages/student/TestEnvironment"));
 const TestSummary = lazy(() => import("./pages/student/TestSummary"));
 const ReviewAttempts = lazy(() => import("./pages/teacher/ReviewAttempts"));
 const GradeAttempt = lazy(() => import("./pages/teacher/GradeAttempt"));
+const Blogs = lazy(() => import("./pages/shared/Blogs"));
 
 function App() {
   return (
@@ -64,6 +65,11 @@ function App() {
             <Route path="/teacher/attempt/:attemptId/grade" element={<GradeAttempt />} />
 
           </Route>
+        </Route>
+
+        {/* Shared Protected Routes (any authenticated role) */}
+        <Route element={<ProtectedRoute />}>
+          <Route path="/blogs" element={<Blogs />} />
         </Route>
 
       </Routes>

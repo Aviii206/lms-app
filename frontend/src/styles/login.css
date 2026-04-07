@@ -10,12 +10,84 @@ body{
 }
 
 /* Page Layout */
-.login-page{
-  height:100vh;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
+.login-page {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden; /* clipped at page level */
+}
+
+.login-left-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* don't center-clip on short screens */
+  padding: 40px;
+  background: #f7f9fb;
+  overflow-y: auto; /* scroll if content is taller than viewport */
+}
+
+/* centre vertically when panel is tall enough */
+.login-left-panel > * {
+  width: 100%;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* push content to center only when there is room */
+.login-left-panel::before {
+  content: "";
+  flex: 1;
+}
+.login-left-panel::after {
+  content: "";
+  flex: 1;
+}
+
+.login-right-panel {
+  flex: 1.2;
+  background:
+    radial-gradient(ellipse at 20% 20%, rgba(130, 186, 247, 0.18) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 80%, rgba(33, 98, 153, 0.12) 0%, transparent 55%),
+    linear-gradient(160deg, #eef4fb 0%, #ddeaf8 50%, #e8f0fa 100%);
+  border-left: 1px solid rgba(130, 186, 247, 0.25);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Subtle decorative ring behind the card */
+.login-right-panel::before {
+  content: "";
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(130, 186, 247, 0.14) 0%, transparent 70%);
+  top: -120px;
+  right: -120px;
+  pointer-events: none;
+}
+
+.login-right-panel::after {
+  content: "";
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(33, 98, 153, 0.09) 0%, transparent 70%);
+  bottom: -80px;
+  left: -80px;
+  pointer-events: none;
+}
+
+/* Signup page — full screen centred (no blog panel) */
+.login-page.signup-page {
+  justify-content: center;
+  align-items: center;
+  background: #f7f9fb;
 }
 
 /* Logo Section */
@@ -59,14 +131,18 @@ body{
 }
 
 /* Login Card */
-.login-card{
-  width:440px;
+.login-card {
+  width: 100%;
+  max-width: 440px;
   background: #ffffff;
-  padding:48px;
-  border-radius:32px; /* Super soft shapes */
+  padding: 40px;
+  border-radius: 32px;
   box-shadow: 0px 12px 32px rgba(44, 52, 55, 0.06);
   animation: fadeInUp 0.5s ease-out 0.1s both;
+  box-sizing: border-box;
 }
+
+
 
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(20px); }

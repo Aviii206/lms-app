@@ -4,6 +4,7 @@ import DashboardLayout from "../../components/layout/DashboardLayout";
 import { AuthContext } from "../../context/AuthContext";
 import StatCard from "../../components/common/StatCard";
 import BookLoader from "../../components/common/BookLoader";
+import DashboardBlogSection from "../../components/common/DashboardBlogSection";
 import "../../styles/dashboard.css";
 
 const TeacherDashboard = () => {
@@ -70,6 +71,8 @@ const TeacherDashboard = () => {
               </div>
             ))}
           </div>
+
+          <DashboardBlogSection />
         </>
       )}
     </DashboardLayout>

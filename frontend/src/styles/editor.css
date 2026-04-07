@@ -1,0 +1,412 @@
+/* ================================================================
+   RICH TEXT EDITOR  —  Ethereal Clean Light Theme
+   ================================================================ */
+
+/* ── Outer wrapper ── */
+.rich-editor-wrap {
+  border: 1.5px solid #e5e7eb;
+  border-radius: 16px;
+  background: #f7f9fb;
+  overflow: hidden;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.rich-editor-wrap:focus-within {
+  border-color: #3b82f6;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.12);
+}
+
+/* ── Toolbar ── */
+.editor-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 3px;
+  padding: 10px 12px;
+  background: #ffffff;
+  border-bottom: 1.5px solid #f3f4f6;
+}
+
+/* ── Toolbar buttons ── */
+.tool-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 10px;
+  min-width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  font-size: 13px;
+  font-weight: 700;
+  color: #374151;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.tool-btn:hover {
+  background: #f3f4f6;
+  color: #111827;
+}
+
+.tool-btn--active {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+/* ── Highlight swatches ── */
+.tool-swatch {
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: border-color 0.15s, transform 0.15s;
+  flex-shrink: 0;
+}
+
+.tool-swatch:hover {
+  border-color: #6b7280;
+  transform: scale(1.2);
+}
+
+/* ── Separator ── */
+.tool-sep {
+  width: 1px;
+  height: 20px;
+  background: #e5e7eb;
+  flex-shrink: 0;
+  margin: 0 4px;
+}
+
+/* ── Editor canvas ── */
+.editor-canvas {
+  padding: 20px 22px;
+  min-height: 220px;
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.75;
+  color: #1f2937;
+  outline: none;
+}
+
+.editor-canvas .ProseMirror {
+  outline: none;
+  min-height: 200px;
+}
+
+/* Placeholder */
+.editor-canvas .ProseMirror p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  color: #9ca3af;
+  pointer-events: none;
+  float: left;
+  height: 0;
+}
+
+/* ── Typography inside editor ── */
+.editor-canvas h1 {
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: #111827;
+  margin: 20px 0 8px;
+  line-height: 1.2;
+}
+
+.editor-canvas h2 {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #1f2937;
+  margin: 18px 0 6px;
+}
+
+.editor-canvas h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #374151;
+  margin: 14px 0 4px;
+}
+
+.editor-canvas p {
+  margin: 0 0 10px;
+}
+
+.editor-canvas strong { font-weight: 800; }
+.editor-canvas em     { font-style: italic; color: #4b5563; }
+.editor-canvas s      { color: #9ca3af; }
+.editor-canvas u      { text-decoration: underline; }
+
+.editor-canvas code {
+  background: #f3f4f6;
+  border-radius: 6px;
+  padding: 2px 7px;
+  font-size: 13px;
+  font-family: "Fira Code", "JetBrains Mono", monospace;
+  color: #dc2626;
+}
+
+.editor-canvas pre {
+  background: #1f2937;
+  color: #f9fafb;
+  border-radius: 14px;
+  padding: 18px 20px;
+  font-family: "Fira Code", "JetBrains Mono", monospace;
+  font-size: 13px;
+  overflow-x: auto;
+  margin: 14px 0;
+}
+
+.editor-canvas pre code {
+  background: transparent;
+  padding: 0;
+  color: inherit;
+}
+
+.editor-canvas blockquote {
+  border-left: 4px solid #3b82f6;
+  padding-left: 16px;
+  margin: 14px 0;
+  color: #6b7280;
+  font-style: italic;
+}
+
+.editor-canvas ul,
+.editor-canvas ol {
+  padding-left: 24px;
+  margin: 8px 0;
+}
+
+.editor-canvas li {
+  margin-bottom: 4px;
+}
+
+/* Highlights */
+.editor-canvas mark {
+  border-radius: 4px;
+  padding: 0 3px;
+}
+
+/* ── Rendered blog content (read-only display) ── */
+.blog-rich-content {
+  font-size: 16px;
+  line-height: 1.75;
+  color: #4b5563;
+}
+
+.blog-rich-content h1 {
+  font-size: 26px;
+  font-weight: 900;
+  color: #111827;
+  letter-spacing: -0.04em;
+  margin: 16px 0 6px;
+}
+
+.blog-rich-content h2 {
+  font-size: 21px;
+  font-weight: 800;
+  color: #1f2937;
+  margin: 14px 0 4px;
+}
+
+.blog-rich-content h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: #374151;
+  margin: 12px 0 4px;
+}
+
+.blog-rich-content p     { margin: 0 0 10px; }
+.blog-rich-content strong { font-weight: 800; color: #1f2937; }
+.blog-rich-content em     { font-style: italic; color: #4b5563; }
+.blog-rich-content u      { text-decoration: underline; }
+.blog-rich-content s      { color: #9ca3af; }
+.blog-rich-content mark   { border-radius: 4px; padding: 0 3px; }
+
+.blog-rich-content code {
+  background: #f3f4f6;
+  border-radius: 6px;
+  padding: 2px 7px;
+  font-size: 13px;
+  font-family: "Fira Code", monospace;
+  color: #dc2626;
+}
+
+.blog-rich-content pre {
+  background: #1f2937;
+  color: #f9fafb;
+  border-radius: 14px;
+  padding: 18px 20px;
+  font-family: "Fira Code", monospace;
+  font-size: 13px;
+  overflow-x: auto;
+  margin: 14px 0;
+}
+
+.blog-rich-content pre code {
+  background: transparent;
+  padding: 0;
+  color: inherit;
+}
+
+.blog-rich-content blockquote {
+  border-left: 4px solid #3b82f6;
+  padding-left: 16px;
+  margin: 14px 0;
+  color: #6b7280;
+  font-style: italic;
+}
+
+.blog-rich-content ul,
+.blog-rich-content ol {
+  padding-left: 24px;
+  margin: 8px 0;
+}
+
+.blog-rich-content li { margin-bottom: 4px; }
+
+/* ── Attachment chips ── */
+.attachments-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid #f3f4f6;
+}
+
+.attachment-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: #f7f9fb;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 9999px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+  text-decoration: none;
+  transition: all 0.2s;
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.attachment-chip:hover {
+  background: #eff6ff;
+  border-color: #93c5fd;
+  color: #2563eb;
+}
+
+.attachment-chip .chip-icon {
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+/* ── Upload area in modal ── */
+.upload-area {
+  border: 2px dashed #e5e7eb;
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: #f7f9fb;
+  margin-bottom: 20px;
+}
+
+.upload-area:hover {
+  border-color: #3b82f6;
+  background: #eff6ff;
+}
+
+.upload-area input[type="file"] {
+  display: none;
+}
+
+.upload-area label {
+  cursor: pointer;
+  color: #6b7280;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.upload-area .upload-icon {
+  font-size: 28px;
+}
+
+.upload-area .upload-hint {
+  font-size: 12px;
+  color: #9ca3af;
+  font-weight: 500;
+}
+
+.pending-files {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.pending-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: #dbeafe;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #1d4ed8;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pending-chip button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #1d4ed8;
+  font-size: 14px;
+  padding: 0;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+/* ── Mobile ── */
+@media screen and (max-width: 768px) {
+  .editor-toolbar {
+    gap: 2px;
+    padding: 8px;
+  }
+
+  .tool-btn {
+    padding: 5px 7px;
+    font-size: 12px;
+    min-width: 28px;
+    height: 28px;
+  }
+
+  .editor-canvas {
+    padding: 14px 16px;
+    font-size: 14px;
+  }
+
+  .attachment-chip {
+    max-width: 160px;
+  }
+}

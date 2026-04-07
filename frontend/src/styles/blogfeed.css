@@ -1,0 +1,356 @@
+/* ================================================================
+   BLOG FEED (Login Page Right Panel)
+   Ethereal Clean Light Theme — full premium card carousel
+   ================================================================ */
+
+.blog-feed-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background: transparent;
+  padding: 52px 44px 36px;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Header ── */
+.blog-feed-header {
+  margin-bottom: 32px;
+  flex-shrink: 0;
+}
+
+.blog-feed-header h2 {
+  font-size: 32px;
+  font-weight: 900;
+  color: #1f2937;
+  letter-spacing: -0.04em;
+  margin-bottom: 6px;
+  line-height: 1.15;
+}
+
+.blog-feed-header p {
+  color: #9ca3af;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* ── Card Stage ── */
+.bfc-card-stage {
+  display: flex;
+  align-items: stretch;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+/* ── Card ── */
+.bfc-card {
+  background: #ffffff;
+  border-radius: 28px;
+  padding: 26px 28px;
+  box-shadow: 0 12px 40px rgba(44, 52, 55, 0.07);
+  border: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  animation: cardFadeIn 0.45s ease;
+  overflow: hidden;
+}
+
+@keyframes cardFadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Author Row ── */
+.bfc-card-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.bfc-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 17px;
+  flex-shrink: 0;
+}
+
+.bfc-author-name {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  color: #1f2937;
+  line-height: 1.2;
+}
+
+.bfc-author-meta {
+  display: block;
+  font-size: 11px;
+  color: #9ca3af;
+  font-weight: 500;
+  text-transform: capitalize;
+  margin-top: 2px;
+}
+
+.bfc-public-badge {
+  margin-left: auto;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 12px;
+  background: #dbeafe;
+  color: #1d4ed8;
+  border-radius: 9999px;
+  flex-shrink: 0;
+}
+
+/* ── Title ── */
+.bfc-title {
+  font-size: 24px;
+  font-weight: 900;
+  color: #111827;
+  letter-spacing: -0.04em;
+  line-height: 1.25;
+  margin: 0;
+}
+
+/* ── Preview — renders the actual rich HTML ── */
+.bfc-preview {
+  font-size: 14px;
+  color: #4b5563;
+  line-height: 1.65;
+  overflow: hidden;
+  max-height: 88px; /* ~4 lines */
+  position: relative;
+  /* Fade out at bottom */
+  mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+}
+
+/* Typography inside rendered rich content */
+.bfc-preview h1 {
+  font-size: 16px;
+  font-weight: 800;
+  color: #111827;
+  letter-spacing: -0.02em;
+  margin-bottom: 4px;
+}
+
+.bfc-preview h2 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 3px;
+}
+
+.bfc-preview h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #374151;
+  margin-bottom: 2px;
+}
+
+.bfc-preview p   { margin: 0 0 4px; }
+.bfc-preview strong { font-weight: 800; color: #1f2937; }
+.bfc-preview em  { font-style: italic; }
+.bfc-preview u   { text-decoration: underline; }
+.bfc-preview s   { color: #9ca3af; }
+.bfc-preview mark { border-radius: 3px; padding: 0 2px; }
+
+.bfc-preview code {
+  background: #f3f4f6;
+  border-radius: 4px;
+  padding: 1px 5px;
+  font-size: 12px;
+  font-family: "Fira Code", monospace;
+  color: #dc2626;
+}
+
+.bfc-preview ul,
+.bfc-preview ol {
+  padding-left: 18px;
+  margin: 2px 0;
+}
+
+.bfc-preview li { margin-bottom: 2px; }
+
+.bfc-preview blockquote {
+  border-left: 3px solid #3b82f6;
+  padding-left: 10px;
+  color: #6b7280;
+  font-style: italic;
+  margin: 4px 0;
+}
+
+/* ── Attachments ── */
+.bfc-attachments {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.bfc-att-chip {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 12px;
+  background: #f3f4f6;
+  border-radius: 9999px;
+  color: #374151;
+  overflow: hidden;
+  max-width: 160px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* ── Stats ── */
+.bfc-stats {
+  display: flex;
+  gap: 16px;
+  padding-top: 14px;
+  border-top: 1px solid #f3f4f6;
+  margin-top: auto;
+}
+
+.bfc-stat {
+  font-size: 13px;
+  font-weight: 700;
+  color: #6b7280;
+}
+
+/* ── Dot navigation ── */
+.bfc-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+  flex-shrink: 0;
+}
+
+.bfc-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: #e5e7eb;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.bfc-dot--active {
+  width: 24px;
+  background: #216299;
+}
+
+/* ── Progress bar ── */
+.bfc-progress-track {
+  width: 100%;
+  height: 2px;
+  background: #f3f4f6;
+  border-radius: 9999px;
+  margin-top: 14px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.bfc-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #216299, #82baf7);
+  border-radius: 9999px;
+  animation: progress 5s linear forwards;
+}
+
+@keyframes progress {
+  from { width: 0%; }
+  to   { width: 100%; }
+}
+
+/* ── Call to action ── */
+.bfc-cta {
+  text-align: center;
+  font-size: 13px;
+  color: #9ca3af;
+  font-weight: 500;
+  margin-top: 16px;
+  flex-shrink: 0;
+}
+
+/* ── Loading skeletons ── */
+.bfc-skeleton-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1;
+}
+
+.bfc-skeleton {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 28px;
+  box-shadow: 0 8px 24px rgba(44, 52, 55, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.bfc-skel-line {
+  background: linear-gradient(90deg, #f3f4f6 25%, #e9ebee 50%, #f3f4f6 75%);
+  background-size: 200% 100%;
+  animation: bfc-shimmer 1.4s infinite;
+  border-radius: 8px;
+}
+
+@keyframes bfc-shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ── Empty state ── */
+.bfc-empty {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.bfc-empty-icon {
+  font-size: 48px;
+}
+
+.bfc-empty h3 {
+  font-size: 20px;
+  font-weight: 800;
+  color: #374151;
+  letter-spacing: -0.02em;
+}
+
+.bfc-empty p {
+  font-size: 14px;
+  color: #9ca3af;
+  font-weight: 500;
+}
+
+/* ── Hide right panel on narrow screens ── */
+@media screen and (max-width: 820px) {
+  .login-right-panel {
+    display: none;
+  }
+
+  .login-left-panel {
+    flex: 1;
+    width: 100%;
+  }
+}

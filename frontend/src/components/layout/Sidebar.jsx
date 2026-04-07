@@ -7,7 +7,8 @@ import {
   MdAssignment, 
   MdChecklist, 
   MdArticle, 
-  MdPlaylistAddCheck 
+  MdPlaylistAddCheck,
+  MdRssFeed
 } from "react-icons/md";
 import { FaGraduationCap } from "react-icons/fa";
 import "../../styles/sidebar.css";
@@ -35,6 +36,9 @@ const Sidebar = ({ collapsed }) => {
           <NavLink to="/student/available-tests" title="Available Tests" className={({ isActive }) => isActive ? "active-link" : ""}>
             <MdArticle size={20} style={{ minWidth: "20px" }} /> <span className="text">Available Tests</span>
           </NavLink>
+          <NavLink to="/blogs" title="Community Blogs" className={({ isActive }) => isActive ? "active-link" : ""}>
+            <MdRssFeed size={20} style={{ minWidth: "20px" }} /> <span className="text">Community Blogs</span>
+          </NavLink>
         </>
       )}
 
@@ -60,6 +64,9 @@ const Sidebar = ({ collapsed }) => {
           </NavLink>
           <NavLink to="/teacher/manage-tests" title="Manage Tests" className={({ isActive }) => isActive ? "active-link" : ""}>
             <MdPlaylistAddCheck size={20} style={{ minWidth: "20px" }} /> <span className="text">Manage Tests</span>
+          </NavLink>
+          <NavLink to="/blogs" title="Community Blogs" className={({ isActive }) => isActive ? "active-link" : ""}>
+            <MdRssFeed size={20} style={{ minWidth: "20px" }} /> <span className="text">Community Blogs</span>
           </NavLink>
         </>
       )}

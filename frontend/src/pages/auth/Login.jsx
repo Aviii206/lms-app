@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
+import BlogFeed from "../../components/common/BlogFeed";
 import "../../styles/login.css";
 
 const Login = () => {
@@ -35,69 +36,73 @@ const Login = () => {
 
   return (
     <div className="login-page">
-
-      {/* Logo + Title */}
-      <div className="logo-section">
-        <div className="logo">🎓</div>
-        <h1>LearnHub</h1>
-        <p>Your Learning Management System</p>
-      </div>
-
-      {/* Login Card */}
-      <div className="login-card">
-        <h2>Welcome back</h2>
-        <p className="subtitle">Sign in to continue learning</p>
-
-        <p className="role-text">I am a...</p>
-
-        {/* Role Toggle */}
-        <div className="role-toggle">
-          <button
-            type="button"
-            className={role === "student" ? "active" : ""}
-            onClick={() => setRole("student")}
-          >
-            📘 Student
-          </button>
-
-          <button
-            type="button"
-            className={role === "teacher" ? "active" : ""}
-            onClick={() => setRole("teacher")}
-          >
-            👨‍🏫 Teacher
-          </button>
+      <div className="login-left-panel">
+        {/* Logo + Title */}
+        <div className="logo-section">
+          <div className="logo">🎓</div>
+          <h1>LearnHub</h1>
+          <p>Your Learning Management System</p>
         </div>
 
-        <form onSubmit={handleSubmit}>
-          <label>Email</label>
-          <input
-            type="email"
-            placeholder="alex@student.edu"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
+        {/* Login Card */}
+        <div className="login-card">
+          <h2>Welcome back</h2>
+          <p className="subtitle">Sign in to continue learning</p>
 
-          <label>Password</label>
-          <input
-            type="password"
-            placeholder="Enter password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
+          <p className="role-text">I am a...</p>
 
-          <button className="signin-btn" type="submit" disabled={loading}>
-            {loading ? (
-              <><span className="btn-spinner"></span> Signing In...</>
-            ) : "Sign In"}
-          </button>
-          <div className="auth-link-box">
-            Don't have an account? <a href="/signup">Sign up</a>
+          {/* Role Toggle */}
+          <div className="role-toggle">
+            <button
+              type="button"
+              className={role === "student" ? "active" : ""}
+              onClick={() => setRole("student")}
+            >
+              📘 Student
+            </button>
+
+            <button
+              type="button"
+              className={role === "teacher" ? "active" : ""}
+              onClick={() => setRole("teacher")}
+            >
+              👨‍🏫 Teacher
+            </button>
           </div>
-        </form>
 
+          <form onSubmit={handleSubmit}>
+            <label>Email</label>
+            <input
+              type="email"
+              placeholder="alex@student.edu"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+
+            <label>Password</label>
+            <input
+              type="password"
+              placeholder="Enter password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+
+            <button className="signin-btn" type="submit" disabled={loading}>
+              {loading ? (
+                <><span className="btn-spinner"></span> Signing In...</>
+              ) : "Sign In"}
+            </button>
+            <div className="auth-link-box">
+              Don't have an account? <a href="/signup">Sign up</a>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div className="login-right-panel">
+        <BlogFeed />
       </div>
     </div>
   );
