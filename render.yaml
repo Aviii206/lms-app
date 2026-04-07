@@ -1,0 +1,14 @@
+services:
+  # ── Backend (Web Service) ─────────────────────────────────
+  # This configures your Node.js backend on Render.
+  - type: web
+    name: lms-backend
+    env: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
