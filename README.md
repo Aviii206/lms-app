@@ -45,7 +45,7 @@ Follow these instructions to get the project running locally on your machine.
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/your-username/lms-app.git
+git clone https://github.com/Aviii206/lms-app.git
 cd lms-app
 ```
 
